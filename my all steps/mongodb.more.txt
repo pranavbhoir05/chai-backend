@@ -43,4 +43,14 @@ $options:
                              "s" → allows . to match newline
                              "x" → ignores whitespace in pattern
 
+ ###########################################################################
+ $unwind vs $addFields + $first
+ 
+ | `$unwind`                                                | `$addFields: { $first }`                              |
+| -------------------------------------------------------- | ----------------------------------------------------- |
+| Splits an array into separate docs                       | Keeps single document, extracts 1st element           |
+| Can produce multiple documents if multiple matches exist | Always one document, takes only the first             |
+| More common in joins with multiple matches               | Cleaner for single-reference joins like owner or user |
+                            
+
                             

@@ -250,8 +250,12 @@ const deleteVideo = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Invalid video ID")
     }
     
-    const video = await Video.findByIdAndDelete(videoId)
-    
+    const video = await Video.findByIdAndDelete(
+        videoId,
+        {$set: { isDeleted: true }}  // This will set the isDeleted field to true instead of actually deleting the document.
+    )
+    // console.log("video =", video);
+        
     if(!video) {
         throw new ApiError(404, "Video not found")
     }
