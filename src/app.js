@@ -31,5 +31,13 @@ import videoRoutes from "./routes/video.routes.js"
 app.use("/api/v1/users", userRoutes)
 app.use("/api/v1/videos", videoRoutes)
 
+//for testing purpose
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Vidotube Backend is running"
+  });
+});
+
 // http://localhost:8000/api/v1/users/register
 export default app
